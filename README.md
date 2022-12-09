@@ -28,7 +28,7 @@ If you're not sure if that's all installed or you don't know how then check out 
 
 Using the standard go tools you can install Fyne's core library using:
 
-    $ go get fyne.io/fyne/v2
+    $ go get fyne.io/sdfighting/v2
 
 # Widget demo
 

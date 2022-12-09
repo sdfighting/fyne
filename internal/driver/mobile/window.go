@@ -41,6 +41,10 @@ func (w *window) SetFullScreen(bool) {
 	// no-op
 }
 
+func (w *window) MoveScreen(posX, posY int) {
+	// no-op
+}
+
 func (w *window) Resize(size fyne.Size) {
 	w.Canvas().(*mobileCanvas).Resize(size)
 }

@@ -133,6 +133,30 @@ func (w *window) SetFullScreen(full bool) {
 	})
 }
 
+func (w *window) MoveScreen(posX, posY int) {
+	viewWidth, viewHeight := w.screenSize(w.canvas.size)
+	if w.width > viewWidth { // in case our window has not called back to canvas size yet
+		viewWidth = w.width
+	}
+	if w.height > viewHeight {
+		viewHeight = w.height
+	}
+
+	// get window dimensions in pixels
+	monitor := w.getMonitorForWindow()
+	monMode := monitor.GetVideoMode()
+
+	// these come into play when dealing with multiple monitors
+	//monX, monY := monitor.GetPos()
+
+	// math them to the middle
+	newX := (monMode.Width / 2) - (viewWidth / 2) + posX
+	newY := (monMode.Height / 2) - (viewHeight / 2) + posY
+
+	// set new window coordinates
+	w.viewport.SetPos(newX, newY)
+}
+
 func (w *window) CenterOnScreen() {
 	w.centered = true
 
